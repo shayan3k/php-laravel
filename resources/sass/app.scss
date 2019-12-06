@@ -1,0 +1,15 @@
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Nunito");
+
+// Variables
+@import "variables";
+
+// animate.css
+@import "animate";
+
+// Bootstrap
+@import "~bootstrap/scss/bootstrap";
+
+#containerCard > div {
+  font-size: 1rem;
+}
