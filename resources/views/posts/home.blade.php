@@ -14,23 +14,33 @@
             <div class="card card my-3" id='containerCard'>
                 <div class="card-header font-weight-bold bg-info">
 
-                    <div class="row">
-                        <div class="col-8"> {{$post->title}}</div>
-                        <div class="col-4"> <a class='text-white' data-toggle="collapse"
-                                href="#collapsePost{{$post->id}}" role="button" aria-expanded="false"
-                                aria-controls="collapsePost{{$post->id}}">Expand Body</a></div>
+                    <div class="row d-flex justify-content-between">
+                        <div class='lead'> {{$post->title}}</div>
+                        <a class='text-white px-4' data-toggle="collapse" href="#collapsePost{{$post->id}}"
+                            role="button" aria-expanded="false" aria-controls="collapsePost{{$post->id}}">></a>
                     </div>
                 </div>
                 <div class="collapse" id="collapsePost{{$post->id}}">
                     <div class="card-body">
-                        {{$post->body}} </div>
-                    @if ($post->userId === Auth::user()->id)
-                    <hr>
-                    <div class="row">
-                        <div class="col-6"></div>
-                        <div class="col-6"><a class='btn btn-outline-secondary'>Edit post</a>
-                            <a class='btn btn-danger'>Delete Post</a></div>
+                        {{$post->body}}
+
+
+                        @if(Auth::check())
+                        @if ($post->userId === Auth::user()->id)
+                        <hr>
+
+                        <div class="col-6"><a class='btn btn-outline-secondary' href='/posts/{{$post->id}}/edit'>Edit
+                                post</a>
+                            <form action="/posts/{{$post->id}}" method='POST' class='d-inline'>
+                                <button type='submit' class='btn btn-danger' href='/posts/{{$post->id}}'>Delete
+                                    Post</button>
+                                @csrf
+                                @method('DELETE')
+                        </div>
+
                     </div>
+
+                    @endif
                     @endif
 
 

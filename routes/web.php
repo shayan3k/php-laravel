@@ -20,11 +20,12 @@ Route::get('/home' , function(){
     return redirect('/posts');
 });
 
-
-
 Route::get('/posts', 'PostController@index');
 Route::get('/posts/create' , 'PostController@create');
 Route::post('/posts', 'PostController@store');
+Route::get('/posts/{id}/edit','PostController@edit')->middleware('auth');
+Route::put('/posts/{id}','PostController@update');
+Route::delete('/posts/{id}','PostController@destroy');
 
 Auth::routes();
 

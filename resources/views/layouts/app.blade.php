@@ -82,7 +82,6 @@
                             </a>
                         </li>
 
-
                         <li class='nav-item d-flex justify-content-center align-items-center'>
                             <a href="/posts/create"
                                 class='text-muted d-flex justify-content-center align-items-center'>Create New

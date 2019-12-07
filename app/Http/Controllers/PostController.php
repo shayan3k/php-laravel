@@ -81,7 +81,11 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::where('id',$id)->first();
+
+        return view('posts.update')->with(compact('post'));
+
+
     }
 
     /**
@@ -93,7 +97,15 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = Post::where('id',$id)->first();
+
+        $post -> title = $request->title;
+        $post -> body = $request->body;
+
+        $post->save();
+        return redirect('/posts');
+
+
     }
 
     /**
@@ -104,7 +116,9 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::where('id',$id)->first();
+        $post->delete();
+        return redirect('/posts');
     }
 
 }
